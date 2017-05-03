@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        // ページの読み込み完了時に実行する
+        document.addEventListener('DOMContentLoaded', function(){
+            // 今日の日付をとる
+            var nowData = new Date();
+            // 西暦をとる
+            var fullYear = nowData.getFullYear();
+            // 数値の西暦を文字列に変換してそこから下2桁の文字列をとる
+            var shortYear = String(fullYear).substr(2,2);
+            // 平成の下2桁の文字列を数値に変換してそれに12をたす
+            var heiseiYear = Number(shortYear) + 12;
+            
+            // 得られた数値をHTMLに反映
+            document.getElementById('heisei-year').textContent = heiseiYear;
+            document.getElementById('year').textContent = fullYear;
+        });
+    </script>
+</head>
+<body>
+    <div id="heisei">今年は平成<span id="heisei-year"></span>年です</div>
+    <div id="ad">A.D. <span id="year"></span></div>
+</body>
+</html>
